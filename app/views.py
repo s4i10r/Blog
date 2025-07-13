@@ -1,10 +1,11 @@
-from flask import Flask, redirect, url_for, render_template
-from app import app
+from flask import Blueprint, redirect, url_for, render_template
 
-@app.route("/")
+main = Blueprint("main", __name__)
+
+@main.route("/")
 def home():
     return redirect(url_for("blog"))
 
-@app.route("/blog")
+@main.route("/blog")
 def blog():
     return render_template("blog.html")
